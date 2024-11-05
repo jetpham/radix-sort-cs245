@@ -6,7 +6,7 @@ public class RadixSort {
         Random rand = new Random();
         int[] array = new int[size];
         for (int i = 0; i < size; i++) {
-            array[i] = rand.nextInt(1000); // Random numbers between 0 and 999999
+            array[i] = rand.nextInt(100); // Random numbers between 0 and 999999
         }
         return array;
     }
@@ -78,18 +78,17 @@ public class RadixSort {
     public static void main(String[] args) {
         // Array sizes to test
         int[] sizes = { 100, 1000, 10000, 100000, 1000000 };
+        System.out.println(Arrays.toString(sizes).replaceAll("[\\[\\]]", ""));
         // Loop through each size and test the radix sort
-        for (int size : sizes) {
-            int[] testArray = generateRandomArray(size);
+        long[] times = new long[sizes.length];
+        for (int i = 0; i < times.length; i++) {
+            int[] testArray = generateRandomArray(sizes[i]);
             long startTime = System.nanoTime();
             radixsort(testArray, testArray.length);
             long endTime = System.nanoTime();
             long duration = (endTime - startTime);
-            if (!isSorted(testArray)) {
-                System.out.println("not sorted");
-            }
-            System.out.println("Radix sort execution time for array size " + size + ": " + (duration / 1_000_000.0)
-                    + " milliseconds");
+            times[i] = duration;
         }
+        System.out.println(Arrays.toString(times).replaceAll("[\\[\\]]", ""));
     }
 }
