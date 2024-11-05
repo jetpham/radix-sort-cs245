@@ -6,7 +6,7 @@ public class RadixSort {
         Random rand = new Random();
         int[] array = new int[size];
         for (int i = 0; i < size; i++) {
-            array[i] = rand.nextInt(100); // Random numbers between 0 and 999999
+            array[i] = rand.nextInt(1000); // Random numbers between 0 and 999999
         }
         return array;
     }
@@ -62,12 +62,6 @@ public class RadixSort {
         // exp is 10^i where i is current digit number
         for (int exp = 1; m / exp > 0; exp *= 10)
             countSort(arr, n, exp);
-    }
-
-    // A utility function to print an array
-    static void print(int arr[], int n) {
-        for (int i = 0; i < n; i++)
-            System.out.print(arr[i] + " ");
     }
 
     // A utility function to check if the array is sorted
